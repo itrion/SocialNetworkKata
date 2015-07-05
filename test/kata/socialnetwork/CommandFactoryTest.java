@@ -15,22 +15,22 @@ public class CommandFactoryTest {
 	private CommandFactory factory = new CommandFactory();
 
 	@Test
-	public void identifies_post_command() {
+	public void identifies_post_to_wall_command() {
 		assertThat(factory.create("a_user -> a message"), is(instanceOf(PostToWall.class)));
 	}
 	
 	@Test
-	public void identifies_read_command() {
+	public void identifies_read_wall_command() {
 		assertThat(factory.create("just_a_user wall"), is(instanceOf(ReadWall.class)));
 	}
 	
 	@Test
-	public void identifies_follows_command() {
+	public void identifies_follow_user_command() {
 		assertThat(factory.create("a_user follows another_user"), is(instanceOf(FollowUser.class)));
 	}
 
 	@Test
-	public void identifies_wall_command() {
+	public void identifies_read_time_line_command() {
 		assertThat(factory.create("a_user"), is(instanceOf(ReadTimeLine.class)));
 	}
 }
