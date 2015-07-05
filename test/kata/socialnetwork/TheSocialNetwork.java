@@ -42,7 +42,7 @@ public class TheSocialNetwork {
 		configureUserInput("Bob follows Alice",
 				"Bob follows Patrice",
 				"Bob wall");
-		
+		verify(environment).follows("Bob");
 		verify(environment).timeline("Bob");
 		verify(environment).timeline("Alice");
 		verify(environment).timeline("Patrice");
