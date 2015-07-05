@@ -1,7 +1,10 @@
 package kata.socialnetwork;
 
+import java.util.List;
+
 public class MessageFormatter {
-	public String toString(Message message) {
-		return null;
+	
+	public String format(List<Message> messages) {
+		return "";
 	}
 }

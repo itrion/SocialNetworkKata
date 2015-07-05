@@ -3,11 +3,16 @@ package kata.socialnetwork;
 import kata.socialnetwork.commands.FollowUser;
 import kata.socialnetwork.commands.PostToWall;
 import kata.socialnetwork.commands.ReadTimeline;
+import kata.socialnetwork.commands.ReadWall;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import java.util.Arrays;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.anyList;
+import static org.mockito.Mockito.*;
 
 public class CommandTest {
 	
@@ -30,7 +35,8 @@ public class CommandTest {
 	public void read_timeline_query_the_environment_and_returns_the_result() {
 		MessageFormatter formatter = mock(MessageFormatter.class);
 		String user = "Bob";
-		new ReadTimeline(user, formatter).execute(environment);
+		when(formatter.format(anyList())).thenReturn("");
+		assertThat(new ReadTimeline(user, formatter).execute(environment), is(""));
 		verify(environment).timeline(user);
 	}
 
@@ -40,5 +46,19 @@ public class CommandTest {
 		String followed = "Bob";
 		new FollowUser(follower, followed).execute(environment);
 		verify(environment).addFollowing(follower, followed);
+	}
+	
+	@Test
+	public void read_wall_query_the_followed_timelines_and_store_the_result() {
+		String user = "Alice";
+		MessageFormatter formatter = mock(MessageFormatter.class);
+		when(environment.follows(user)).thenReturn(Arrays.asList("Bob", "Patrice"));
+		when(formatter.format(anyList())).thenReturn("");
+		assertThat(new ReadWall(user, formatter).execute(environment), is(""));
+		
+		verify(environment).follows(user);
+		verify(environment).timeline("Alice");
+		verify(environment).timeline("Bob");
+		verify(environment).timeline("Patrice");
 	}
 }

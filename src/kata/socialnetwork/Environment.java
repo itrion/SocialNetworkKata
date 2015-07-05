@@ -8,4 +8,6 @@ public interface Environment {
 	List<Message> timeline(String user);
 
 	void addFollowing(String follower, String followed);
+
+	List<String> follows(String bob);
 }
