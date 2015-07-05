@@ -38,6 +38,7 @@ public class CommandTest {
 		when(formatter.format(anyList())).thenReturn("");
 		assertThat(new ReadTimeline(user, formatter).execute(environment), is(""));
 		verify(environment).timeline(user);
+		verify(formatter).format(anyList());
 	}
 
 	@Test
@@ -60,5 +61,6 @@ public class CommandTest {
 		verify(environment).timeline("Alice");
 		verify(environment).timeline("Bob");
 		verify(environment).timeline("Patrice");
+		verify(formatter).format(anyList());
 	}
 }
