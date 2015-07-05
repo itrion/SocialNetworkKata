@@ -2,6 +2,7 @@ package kata.socialnetwork;
 
 import kata.socialnetwork.commands.FollowUser;
 import kata.socialnetwork.commands.PostToWall;
+import kata.socialnetwork.commands.ReadTimeLine;
 import kata.socialnetwork.commands.ReadWall;
 import org.junit.Test;
 
@@ -20,11 +21,16 @@ public class CommandFactoryTest {
 	
 	@Test
 	public void identifies_read_command() {
-		assertThat(factory.create("just_a_user"), is(instanceOf(ReadWall.class)));
+		assertThat(factory.create("just_a_user wall"), is(instanceOf(ReadWall.class)));
 	}
 	
 	@Test
 	public void identifies_follows_command() {
 		assertThat(factory.create("a_user follows another_user"), is(instanceOf(FollowUser.class)));
+	}
+
+	@Test
+	public void identifies_wall_command() {
+		assertThat(factory.create("a_user"), is(instanceOf(ReadTimeLine.class)));
 	}
 }
