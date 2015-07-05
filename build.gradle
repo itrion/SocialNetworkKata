@@ -8,6 +8,7 @@ repositories {
 }
 
 dependencies {
+    compile 'org.ocpsoft.prettytime:prettytime:3.2.7.Final'
     testCompile 'junit:junit:4.11'
     testCompile 'org.mockito:mockito-all:1.10+'
 }
