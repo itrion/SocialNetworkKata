@@ -7,7 +7,6 @@ public class FollowUser implements Command{
 	private final String followed;
 
 	public FollowUser(String follower, String followed) {
-
 		this.follower = follower;
 		this.followed = followed;
 	}

@@ -2,6 +2,7 @@ package kata.socialnetwork;
 
 import kata.socialnetwork.commands.FollowUser;
 import kata.socialnetwork.commands.PostToWall;
+import kata.socialnetwork.commands.ReadTimeline;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,6 +26,14 @@ public class CommandTest {
 		verify(environment).addMessage(user, message);
 	}
 	
+	@Test
+	public void read_timeline_query_the_environment_and_returns_the_result() {
+		MessageFormatter formatter = mock(MessageFormatter.class);
+		String user = "Bob";
+		new ReadTimeline(user, formatter).execute(environment);
+		verify(environment).timeline(user);
+	}
+
 	@Test
 	public void follow_user_adds_right_side_user_to_the_left_one_following_list() {
 		String follower = "Alice";
