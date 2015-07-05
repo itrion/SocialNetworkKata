@@ -5,5 +5,5 @@ public interface Environment {
 
 	void timeline(String user);
 
-	void addFollowing(String bob, String alice);
+	void addFollowing(String follower, String followed);
 }
