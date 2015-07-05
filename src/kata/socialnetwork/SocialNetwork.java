@@ -6,7 +6,7 @@ public class SocialNetwork {
 	public void process(String command) {
 	}
 
-	public List<Message> wall(String user) {
+	public List<Message> timeline(String user) {
 		return null;
 	}
 }

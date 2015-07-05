@@ -19,7 +19,7 @@ public class TheSocialNetwork {
 			instance.process(command);
 		}
 		
-		List<Message> bobMessages = instance.wall("Bob");
+		List<Message> bobMessages = instance.timeline("Bob");
 		assertThat(bobMessages.size(), is(2));
 		assertThat(bobMessages.get(0).text(), is("Damn! We lost!"));
 		assertThat(bobMessages.get(1).text(), is("Good game though."));

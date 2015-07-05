@@ -2,7 +2,7 @@ package kata.socialnetwork;
 
 import kata.socialnetwork.commands.FollowUser;
 import kata.socialnetwork.commands.PostToWall;
-import kata.socialnetwork.commands.ReadTimeLine;
+import kata.socialnetwork.commands.ReadTimeline;
 import kata.socialnetwork.commands.ReadWall;
 import org.junit.Test;
 
@@ -31,6 +31,6 @@ public class CommandFactoryTest {
 
 	@Test
 	public void identifies_read_time_line_command() {
-		assertThat(factory.create("a_user"), is(instanceOf(ReadTimeLine.class)));
+		assertThat(factory.create("a_user"), is(instanceOf(ReadTimeline.class)));
 	}
 }

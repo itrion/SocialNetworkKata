@@ -7,6 +7,6 @@ public class CommandFactory {
 		if (input.contains("->")) return new PostToWall();
 		if (input.contains("follows")) return new FollowUser();
 		if (input.contains("wall")) return new ReadWall();
-		else return new ReadTimeLine();
+		else return new ReadTimeline();
 	}
 }

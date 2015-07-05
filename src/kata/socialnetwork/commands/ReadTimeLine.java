@@ -1,4 +1,4 @@
 package kata.socialnetwork.commands;
 
-public class ReadTimeLine implements Command{
+public class ReadTimeline implements Command{
 }
