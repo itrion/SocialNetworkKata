@@ -1,27 +1,56 @@
 package kata.socialnetwork;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Matchers;
 
-import java.util.List;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.*;
 
 public class TheSocialNetwork {
+	
+	private SocialNetwork instance;
+	private Environment environment;
+	
+	@Before
+	public void setUp() throws Exception {
+		environment = mock(Environment.class);
+		instance = new SocialNetwork(environment);
+	}
+	
 	@Test
 	public void should_allow_users_to_post_to_their_walls() {
-		String[] commands = new String[]{
-				"Bob -> Damn! We lost!",
-				"Bob -> Good game though."};
+		configureUserInput("Bob -> Damn! We lost!",
+				"Bob -> Good game though.");
 		
-		SocialNetwork instance = new SocialNetwork();
+		verify(environment, times(2)).addMessage(anyString(), Matchers.<Message>any());
+	}
+	
+	@Test
+	public void should_allow_to_read_a_users_timeline() {
+		configureUserInput("Bob");
+		verify(environment).timeline("Bob");
+	}
+	
+	@Test
+	public void should_allow_to_follow_a_user() {
+		configureUserInput("Bob follows Alice");
+		verify(environment).addFollowing("Bob", "Alice");
+	}
+	
+	@Test
+	public void should_allow_to_read_a_user_wall() {
+		configureUserInput("Bob follows Alice",
+				"Bob follows Patrice",
+				"Bob wall");
+		
+		verify(environment).timeline("Bob");
+		verify(environment).timeline("Alice");
+		verify(environment).timeline("Patrice");
+	}
+	
+	private void configureUserInput(String... commands) {
 		for (String command : commands) {
 			instance.process(command);
 		}
-		
-		List<Message> bobMessages = instance.timeline("Bob");
-		assertThat(bobMessages.size(), is(2));
-		assertThat(bobMessages.get(0).text(), is("Damn! We lost!"));
-		assertThat(bobMessages.get(1).text(), is("Good game though."));
 	}
 }

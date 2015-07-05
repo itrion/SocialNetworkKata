@@ -1,12 +1,10 @@
 package kata.socialnetwork;
 
-import java.util.List;
-
 public class SocialNetwork {
-	public void process(String command) {
+	public SocialNetwork(Environment environment) {
+
 	}
 
-	public List<Message> timeline(String user) {
-		return null;
+	public void process(String command) {
 	}
 }
