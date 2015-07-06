@@ -2,12 +2,18 @@ package kata.socialnetwork.model;
 
 import java.util.List;
 
-public interface Environment {
-	void addMessage(String user, Message message);
+public class Environment {
+	public void addMessage(String user, Message message) {
+	}
 
-	List<Message> timeline(String user);
+	public List<Message> timeline(String user) {
+		throw new UnsupportedOperationException();
+	}
 
-	void addFollowing(String follower, String followed);
+	public void addFollowing(String follower, String followed) {
+	}
 
-	List<String> follows(String bob);
+	public List<String> follows(String bob) {
+		throw new UnsupportedOperationException();
+	}
 }
