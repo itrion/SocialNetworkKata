@@ -1,4 +1,4 @@
-package kata.socialnetwork;
+package kata.socialnetwork.model;
 
 public class Message {
 	private final long timestamp;

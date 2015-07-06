@@ -1,4 +1,4 @@
-package kata.socialnetwork;
+package kata.socialnetwork.model;
 
 import java.util.List;
 

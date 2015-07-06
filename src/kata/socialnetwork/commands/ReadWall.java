@@ -1,8 +1,8 @@
 package kata.socialnetwork.commands;
 
-import kata.socialnetwork.Environment;
+import kata.socialnetwork.model.Environment;
 import kata.socialnetwork.MessageFormatter;
-import kata.socialnetwork.Wall;
+import kata.socialnetwork.model.Wall;
 import kata.socialnetwork.sort.NewestFirst;
 
 public class ReadWall implements Command {

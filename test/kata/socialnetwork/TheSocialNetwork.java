@@ -1,5 +1,7 @@
 package kata.socialnetwork;
 
+import kata.socialnetwork.model.Environment;
+import kata.socialnetwork.model.Message;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Matchers;

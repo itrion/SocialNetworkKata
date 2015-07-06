@@ -1,6 +1,6 @@
 package kata.socialnetwork.sort;
 
-import kata.socialnetwork.Message;
+import kata.socialnetwork.model.Message;
 
 import java.util.Comparator;
 

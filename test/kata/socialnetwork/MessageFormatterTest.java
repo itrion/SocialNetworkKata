@@ -1,5 +1,6 @@
 package kata.socialnetwork;
 
+import kata.socialnetwork.model.Message;
 import org.junit.Test;
 
 import static java.lang.System.currentTimeMillis;

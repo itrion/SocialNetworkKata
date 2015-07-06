@@ -1,5 +1,6 @@
 package kata.socialnetwork;
 
+import kata.socialnetwork.model.Message;
 import org.ocpsoft.prettytime.PrettyTime;
 import org.ocpsoft.prettytime.units.JustNow;
 

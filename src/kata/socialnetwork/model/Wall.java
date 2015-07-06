@@ -1,6 +1,4 @@
-package kata.socialnetwork;
-
-import kata.socialnetwork.sort.NewestFirst;
+package kata.socialnetwork.model;
 
 import java.util.Comparator;
 import java.util.List;
