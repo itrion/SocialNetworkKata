@@ -11,7 +11,9 @@ public class FollowUser implements Command{
 		this.followed = followed;
 	}
 
-	public void execute(Environment environment) {
+	@Override
+	public String execute(Environment environment) {
 		environment.addFollowing(follower, followed);
+		return "";
 	}
 }

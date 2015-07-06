@@ -14,6 +14,7 @@ public class ReadWall implements Command {
 		this.formatter = formatter;
 	}
 	
+	@Override
 	public String execute(Environment environment) {
 		Wall wall = new Wall(user, environment.timeline(user));
 		for (String followed : environment.follows(user)) {

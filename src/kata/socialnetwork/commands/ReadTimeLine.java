@@ -12,6 +12,7 @@ public class ReadTimeline implements Command {
 		this.formatter = formatter;
 	}
 
+	@Override
 	public String execute(Environment environment) {
 		return formatter.format(environment.timeline(user));
 	}

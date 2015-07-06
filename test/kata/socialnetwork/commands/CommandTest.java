@@ -1,10 +1,6 @@
 package kata.socialnetwork.commands;
 
 import kata.socialnetwork.MessageFormatter;
-import kata.socialnetwork.commands.FollowUser;
-import kata.socialnetwork.commands.PostToWall;
-import kata.socialnetwork.commands.ReadTimeline;
-import kata.socialnetwork.commands.ReadWall;
 import kata.socialnetwork.model.Environment;
 import kata.socialnetwork.model.Message;
 import org.junit.Before;

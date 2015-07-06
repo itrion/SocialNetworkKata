@@ -13,7 +13,9 @@ public class PostToWall implements Command {
 		this.message = message;
 	}
 	
-	public void execute(Environment environment) {
+	@Override
+	public String execute(Environment environment) {
 		environment.addMessage(user, message);
+		return "";
 	}
 }
