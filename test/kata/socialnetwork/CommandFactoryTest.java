@@ -1,9 +1,6 @@
 package kata.socialnetwork;
 
-import kata.socialnetwork.commands.FollowUser;
-import kata.socialnetwork.commands.PostToWall;
-import kata.socialnetwork.commands.ReadTimeline;
-import kata.socialnetwork.commands.ReadWall;
+import kata.socialnetwork.commands.*;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.instanceOf;

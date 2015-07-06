@@ -1,6 +1,7 @@
-package kata.socialnetwork;
+package kata.socialnetwork.commands;
 
 import kata.socialnetwork.commands.*;
+import kata.socialnetwork.model.Message;
 
 public class CommandFactory {
 	public Command create(String input) {
