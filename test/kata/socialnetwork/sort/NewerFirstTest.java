@@ -1,4 +1,4 @@
-package kata.socialnetwork;
+package kata.socialnetwork.sort;
 
 import kata.socialnetwork.model.Message;
 import kata.socialnetwork.sort.NewestFirst;

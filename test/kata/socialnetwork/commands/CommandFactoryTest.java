@@ -1,4 +1,4 @@
-package kata.socialnetwork;
+package kata.socialnetwork.commands;
 
 import kata.socialnetwork.commands.*;
 import org.junit.Test;
