@@ -4,9 +4,12 @@ import kata.socialnetwork.model.Message;
 
 import java.util.*;
 
+import static java.util.Collections.unmodifiableList;
+
 public class Environment {
 	private List<String> users = new ArrayList<>();
 	private Map<String, List<Message>> messages = new HashMap<>();
+	private Map<String, List<String>> follows = new HashMap<>();
 
 	public void addMessage(String user, Message message) {
 		if (users.contains(user))
@@ -26,13 +29,16 @@ public class Environment {
 	}
 	
 	public void addFollowing(String follower, String followed) {
+		if (!users.contains(follower) || !users.contains(followed)) return;
+		follows.get(follower).add(followed);
 	}
 	
-	public List<String> follows(String bob) {
-		throw new UnsupportedOperationException();
+	public List<String> followsOf(String user) {
+		List<String> userIsFollowing = follows.get(user);
+		return userIsFollowing != null ? unmodifiableList(userIsFollowing) : new ArrayList<>();
 	}
 	
 	public List<String> users() {
-		return Collections.unmodifiableList(users);
+		return unmodifiableList(users);
 	}
 }

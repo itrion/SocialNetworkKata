@@ -52,11 +52,11 @@ public class CommandTest {
 	public void read_wall_query_the_followed_timelines_and_store_the_result() {
 		String user = "Alice";
 		MessageFormatter formatter = mock(MessageFormatter.class);
-		when(environment.follows(user)).thenReturn(Arrays.asList("Bob", "Patrice"));
+		when(environment.followsOf(user)).thenReturn(Arrays.asList("Bob", "Patrice"));
 		when(formatter.format(anyList())).thenReturn("");
 		assertThat(new ReadWall(user, formatter).execute(environment), is(""));
 		
-		verify(environment).follows(user);
+		verify(environment).followsOf(user);
 		verify(environment).timeline("Alice");
 		verify(environment).timeline("Bob");
 		verify(environment).timeline("Patrice");
