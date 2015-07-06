@@ -1,6 +1,6 @@
 package kata.socialnetwork.commands;
 
-import kata.socialnetwork.model.Environment;
+import kata.socialnetwork.Environment;
 import kata.socialnetwork.MessageFormatter;
 import kata.socialnetwork.model.Wall;
 import kata.socialnetwork.sort.NewestFirst;

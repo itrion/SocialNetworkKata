@@ -1,6 +1,6 @@
 package kata.socialnetwork.commands;
 
-import kata.socialnetwork.model.Environment;
+import kata.socialnetwork.Environment;
 import kata.socialnetwork.model.Message;
 
 public class PostToWall implements Command {

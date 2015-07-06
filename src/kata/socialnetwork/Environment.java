@@ -1,4 +1,6 @@
-package kata.socialnetwork.model;
+package kata.socialnetwork;
+
+import kata.socialnetwork.model.Message;
 
 import java.util.List;
 

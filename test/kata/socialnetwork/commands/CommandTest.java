@@ -1,7 +1,7 @@
 package kata.socialnetwork.commands;
 
 import kata.socialnetwork.MessageFormatter;
-import kata.socialnetwork.model.Environment;
+import kata.socialnetwork.Environment;
 import kata.socialnetwork.model.Message;
 import org.junit.Before;
 import org.junit.Test;
