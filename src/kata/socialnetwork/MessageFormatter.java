@@ -18,7 +18,7 @@ public class MessageFormatter {
 	
 	public String format(List<Message> messages) {
 		StringBuilder builder = new StringBuilder();
-		messages.stream().forEach((message) -> builder.append(format(message)));
+		messages.stream().forEach((message) -> builder.append(format(message)).append('\n'));
 		return builder.toString();
 	}
 	

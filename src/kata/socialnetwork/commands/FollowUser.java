@@ -2,7 +2,7 @@ package kata.socialnetwork.commands;
 
 import kata.socialnetwork.Environment;
 
-public class FollowUser implements Command{
+public class FollowUser implements Command {
 	private final String follower;
 	private final String followed;
 
