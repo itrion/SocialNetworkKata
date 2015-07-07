@@ -1,5 +1,7 @@
 package kata.socialnetwork.commands;
 
+import kata.socialnetwork.MessageFormatter;
+
 import java.util.*;
 import java.util.function.BiFunction;
 
@@ -12,6 +14,7 @@ public class CommandFactory {
 			return new PostToWall(callerName, text);
 		});
 		commands.put("follows", (callerName, input) -> new FollowUser(callerName, input.removeFirst()));
+		commands.put("wall", (callerName, input) -> new ReadWall(callerName, new MessageFormatter()));
 	}
 	
 	public static Command create(String rawInput) {
@@ -20,7 +23,7 @@ public class CommandFactory {
 		String command = "" + input.poll();
 		if (command.contains("->")) return commands.get(command).apply(callerName, input);
 		if (command.contains("follows")) return commands.get(command).apply(callerName, input);
-		if (command.contains("wall")) return new ReadWall(callerName, null);
+		if (command.contains("wall")) return commands.get(command).apply(callerName, input);
 		else return new ReadTimeline(callerName, null);
 	}
 }

@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
+import java.util.Arrays;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
@@ -44,9 +46,8 @@ public class TheSocialNetwork {
 	
 	@Test
 	public void should_allow_to_read_a_user_wall() {
-		configureUserInput("Bob follows Alice",
-				"Bob follows Patrice",
-				"Bob wall");
+		when(environment.followsOf("Bob")).thenReturn(Arrays.asList("Alice", "Patrice"));
+		configureUserInput("Bob wall");
 		verify(environment).followsOf("Bob");
 		verify(environment).timeline("Bob");
 		verify(environment).timeline("Alice");
