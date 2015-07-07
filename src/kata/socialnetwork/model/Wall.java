@@ -1,6 +1,8 @@
 package kata.socialnetwork.model;
 
 import kata.socialnetwork.MessageFormatter;
+import kata.socialnetwork.view.MessageView;
+import kata.socialnetwork.view.MessageViewComparator;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -35,36 +37,5 @@ public class Wall {
 			result.append(messageView.format(formatter)).append('\n');
 		}
 		return result.toString();
-	}
-	
-	private class MessageView {
-		private final String owner;
-		private final Message message;
-		
-		public MessageView(String owner, Message message) {
-			this.owner = owner;
-			this.message = message;
-		}
-		
-		public Message message() {
-			return message;
-		}
-
-		public String format(MessageFormatter formatter) {
-			return owner + " - " + formatter.format(message);
-		}
-	}
-	
-	private class MessageViewComparator implements Comparator<MessageView> {
-		private final Comparator<Message> delegate;
-
-		public MessageViewComparator(Comparator<Message> comparator) {
-			this.delegate = comparator;
-		}
-		
-		@Override
-		public int compare(MessageView lhs, MessageView rhs) {
-			return delegate.compare(lhs.message(), rhs.message());
-		}
 	}
 }
