@@ -1,7 +1,6 @@
 package kata.socialnetwork.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class User {
@@ -24,11 +23,11 @@ public class User {
 	}
 	
 	public List<User> following() {
-		return Collections.unmodifiableList(follows);
+		return follows;
 	}
 	
 	public String name() {
-		return null;
+		return name;
 	}
 
 	public List<Message> timeline() {
