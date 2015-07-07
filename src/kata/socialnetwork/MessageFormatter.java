@@ -9,16 +9,18 @@ import java.util.List;
 
 public class MessageFormatter {
 	
+	private static final int ONE_SECOND = 1000;
 	private PrettyTime prettyTime;
 	
 	public MessageFormatter() {
 		prettyTime = new PrettyTime();
-		prettyTime.getUnit(JustNow.class).setMaxQuantity(1000);
+		prettyTime.getUnit(JustNow.class).setMaxQuantity(ONE_SECOND);
 	}
 	
 	public String format(List<Message> messages) {
 		StringBuilder builder = new StringBuilder();
-		messages.stream().forEach((message) -> builder.append(format(message)).append('\n'));
+		messages.stream()
+				.forEach((message) -> builder.append(format(message)).append('\n'));
 		return builder.toString();
 	}
 	

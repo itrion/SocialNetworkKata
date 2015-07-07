@@ -1,20 +1,21 @@
 package kata.socialnetwork;
 
-import java.io.*;
+import kata.socialnetwork.commands.CommandFactory;
 
-import static kata.socialnetwork.commands.CommandFactory.create;
+import java.io.*;
 
 public class SocialNetwork {
 	private final Environment environment;
 	
-	public SocialNetwork(Environment environment) {
-		this.environment = environment;
-	}
-	
 	public static void main(String[] args) throws IOException {
 		new SocialNetwork(new Environment()).run(System.in, System.out);
 	}
-	
+
+	public SocialNetwork(Environment environment) {
+		this.environment = environment;
+	}
+
+	@SuppressWarnings("InfiniteLoopStatement")
 	private void run(InputStream inStream, PrintStream outStream) throws IOException {
 		BufferedReader input = new BufferedReader(new InputStreamReader(inStream));
 		PrintStream output = new PrintStream(outStream);
@@ -24,6 +25,6 @@ public class SocialNetwork {
 	}
 
 	public String process(String input) {
-		return create(input).execute(environment);
+		return CommandFactory.createFrom(input).execute(environment);
 	}
 }

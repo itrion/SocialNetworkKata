@@ -4,7 +4,8 @@ import kata.socialnetwork.model.Message;
 import kata.socialnetwork.model.User;
 
 import java.util.*;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class Environment {
 	private Map<String, User> users = new HashMap<>();
@@ -26,8 +27,9 @@ public class Environment {
 	
 	public List<String> followsOf(String user) {
 		if (users.containsKey(user))
-			return users.get(user).following().stream()
-					.map(User::name).collect(Collectors.toList());
+			return users.get(user).following()
+					.stream()
+					.map(User::name).collect(toList());
 		return Collections.emptyList();
 	}
 	

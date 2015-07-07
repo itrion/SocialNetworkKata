@@ -1,8 +1,8 @@
 package kata.socialnetwork.model;
 
 public class Message {
-	private final long timestamp;
 	private final String text;
+	private final long timestamp;
 
 	public Message(long timestamp, String text) {
 		this.timestamp = timestamp;

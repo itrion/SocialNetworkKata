@@ -7,7 +7,8 @@ import kata.socialnetwork.view.MessageViewComparator;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class Wall {
 	private final List<MessageView> newsFeed;
@@ -22,19 +23,17 @@ public class Wall {
 		this.formatter = formatter;
 	}
 	
-	public void addToNewsFeed(String otherUser, List<Message> timeline) {
-		newsFeed.addAll(timeline
-				.stream()
-				.map(message -> new MessageView(otherUser, message))
-				.collect(Collectors.toList()));
+	public void addToNewsFeed(String timelineOwner, List<Message> timeline) {
+		newsFeed.addAll(timeline.stream()
+				.map(message -> new MessageView(timelineOwner, message))
+				.collect(toList()));
 	}
 	
 	public String sortedBy(Comparator<Message> comparator) {
 		newsFeed.sort(new MessageViewComparator(comparator));
 		StringBuilder result = new StringBuilder();
-		for (MessageView messageView : newsFeed) {
+		for (MessageView messageView : newsFeed) 
 			result.append(messageView.format(formatter)).append('\n');
-		}
 		return result.toString();
 	}
 }

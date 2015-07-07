@@ -18,7 +18,7 @@ public class CommandFactory {
 		commands.put("timeline", (callerName, input) -> new ReadTimeline(callerName, new MessageFormatter()));
 	}
 	
-	public static Command create(String rawInput) {
+	public static Command createFrom(String rawInput) {
 		Deque<String> input = new ArrayDeque<>(Arrays.asList(rawInput.split(" ")));
 		String callerName = input.poll();
 		return commands.get(fixEmpty(input.poll())).apply(callerName, input);
