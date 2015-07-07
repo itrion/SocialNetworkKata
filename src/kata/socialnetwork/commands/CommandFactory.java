@@ -11,6 +11,7 @@ public class CommandFactory {
 			String text = input.stream().reduce("", (current, next) -> current += " " + next).trim();
 			return new PostToWall(callerName, text);
 		});
+		commands.put("follows", (callerName, input) -> new FollowUser(callerName, input.removeFirst()));
 	}
 	
 	public static Command create(String rawInput) {
@@ -18,7 +19,7 @@ public class CommandFactory {
 		String callerName = input.poll();
 		String command = "" + input.poll();
 		if (command.contains("->")) return commands.get(command).apply(callerName, input);
-		if (command.contains("follows")) return new FollowUser(callerName, "");
+		if (command.contains("follows")) return commands.get(command).apply(callerName, input);
 		if (command.contains("wall")) return new ReadWall(callerName, null);
 		else return new ReadTimeline(callerName, null);
 	}

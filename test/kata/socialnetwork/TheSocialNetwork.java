@@ -52,7 +52,7 @@ public class TheSocialNetwork {
 		verify(environment).timeline("Alice");
 		verify(environment).timeline("Patrice");
 	}
-	
+
 	private void configureUserInput(String... commands) {
 		for (String command : commands) {
 			instance.process(command);
