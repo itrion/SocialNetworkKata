@@ -1,10 +1,11 @@
 package kata.socialnetwork.commands;
 
-import kata.socialnetwork.MessageFormatter;
 import kata.socialnetwork.Environment;
+import kata.socialnetwork.MessageFormatter;
 import kata.socialnetwork.model.Message;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 
 import java.util.Arrays;
 
@@ -24,10 +25,12 @@ public class CommandTest {
 	
 	@Test
 	public void post_to_wall_add_the_message_to_the_user() {
-		Message message = mock(Message.class);
 		String user = "Alice";
-		new PostToWall(user, message).execute(environment);
-		verify(environment).addMessage(user, message);
+		String text = "message";
+		new PostToWall(user, text).execute(environment);
+		ArgumentCaptor<Message> message = ArgumentCaptor.forClass(Message.class);
+		verify(environment).addMessage(eq(user), message.capture());
+		assertThat(message.getValue().text(), is(text));
 	}
 	
 	@Test

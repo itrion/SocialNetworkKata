@@ -7,10 +7,9 @@ public class PostToWall implements Command {
 	private final String user;
 	private final Message message;
 	
-	public PostToWall(String user, Message message) {
-		
+	public PostToWall(String user, String text) {
 		this.user = user;
-		this.message = message;
+		this.message = new Message(System.currentTimeMillis(), text);
 	}
 	
 	@Override

@@ -1,11 +1,12 @@
 package kata.socialnetwork;
 
-import kata.socialnetwork.model.Environment;
 import kata.socialnetwork.model.Message;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Matchers;
+import org.mockito.ArgumentCaptor;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
 public class TheSocialNetwork {
@@ -23,8 +24,10 @@ public class TheSocialNetwork {
 	public void should_allow_users_to_post_to_their_walls() {
 		configureUserInput("Bob -> Damn! We lost!",
 				"Bob -> Good game though.");
-		
-		verify(environment, times(2)).addMessage(anyString(), Matchers.<Message>any());
+		ArgumentCaptor<Message> capturedMessage = ArgumentCaptor.forClass(Message.class);
+		verify(environment, times(2)).addMessage(eq("Bob"), capturedMessage.capture());
+		assertThat(capturedMessage.getAllValues().get(0).text(), is("Damn! We lost!"));
+		assertThat(capturedMessage.getAllValues().get(1).text(), is("Good game though."));
 	}
 	
 	@Test
@@ -44,7 +47,7 @@ public class TheSocialNetwork {
 		configureUserInput("Bob follows Alice",
 				"Bob follows Patrice",
 				"Bob wall");
-		verify(environment).follows("Bob");
+		verify(environment).followsOf("Bob");
 		verify(environment).timeline("Bob");
 		verify(environment).timeline("Alice");
 		verify(environment).timeline("Patrice");

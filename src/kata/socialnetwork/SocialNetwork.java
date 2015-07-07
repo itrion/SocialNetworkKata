@@ -1,12 +1,20 @@
 package kata.socialnetwork;
 
-import kata.socialnetwork.model.Environment;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+
+import static kata.socialnetwork.commands.CommandFactory.create;
 
 public class SocialNetwork {
-	public SocialNetwork(Environment environment) {
-
+	private final Environment environment;
+	
+	public SocialNetwork(Environment environment){
+		this.environment = environment;
 	}
 
-	public void process(String command) {
+	public String process(String input) {
+		return create(input).execute(environment);
 	}
 }
