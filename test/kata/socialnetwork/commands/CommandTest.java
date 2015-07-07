@@ -6,6 +6,8 @@ import kata.socialnetwork.model.Message;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
+import org.mockito.Matchers;
+import org.mockito.Mockito;
 
 import java.util.Arrays;
 
@@ -56,13 +58,14 @@ public class CommandTest {
 		String user = "Alice";
 		MessageFormatter formatter = mock(MessageFormatter.class);
 		when(environment.followsOf(user)).thenReturn(Arrays.asList("Bob", "Patrice"));
-		when(formatter.format(anyList())).thenReturn("");
-		assertThat(new ReadWall(user, formatter).execute(environment), is(""));
+		when(environment.timeline(user)).thenReturn(Arrays.asList(new Message(0, "first message")));
+		when(formatter.format(Matchers.any(Message.class))).thenReturn("first message");
+		assertThat(new ReadWall(user, formatter).execute(environment), is("Alice - first message\n"));
 		
 		verify(environment).followsOf(user);
 		verify(environment).timeline("Alice");
 		verify(environment).timeline("Bob");
 		verify(environment).timeline("Patrice");
-		verify(formatter).format(anyList());
+		verify(formatter).format(Mockito.any(Message.class));
 	}
 }

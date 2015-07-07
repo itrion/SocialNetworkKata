@@ -30,4 +30,8 @@ public class User {
 	public String name() {
 		return null;
 	}
+
+	public List<Message> timeline() {
+		return messages;
+	}
 }

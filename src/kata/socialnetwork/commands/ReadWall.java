@@ -17,9 +17,9 @@ public class ReadWall implements Command {
 	@Override
 	public String execute(Environment environment) {
 		Wall wall = new Wall(user, environment.timeline(user));
-		for (String followed : environment.followsOf(user)) {
+		wall.setFormatter(formatter);
+		for (String followed : environment.followsOf(user))
 			wall.addToNewsFeed(followed, environment.timeline(followed));
-		}
-		return formatter.format(wall.sortBy(new NewestFirst()));
+		return wall.sortedBy(new NewestFirst());
 	}
 }

@@ -13,11 +13,12 @@ public class Environment {
 		users.putIfAbsent(user, new User(user));
 		users.get(user).addMessage(message);
 	}
-	
+
 	public List<Message> timeline(String user) {
-		throw new UnsupportedOperationException();
+		if (users.containsKey(user)) return users.get(user).timeline();
+		return Collections.emptyList();
 	}
-	
+
 	public void addFollowing(String follower, String followed) {
 		if (!users.containsKey(follower) || !users.containsKey(followed)) return;
 		users.get(follower).following(users.get(followed));
@@ -25,9 +26,9 @@ public class Environment {
 	
 	public List<String> followsOf(String user) {
 		if (users.containsKey(user))
-			return users.get(user)
-					.following().stream().map(User::name).collect(Collectors.toList());
-		return new ArrayList<>();
+			return users.get(user).following().stream()
+					.map(User::name).collect(Collectors.toList());
+		return Collections.emptyList();
 	}
 	
 	public Collection<User> users() {

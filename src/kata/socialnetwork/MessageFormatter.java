@@ -18,16 +18,14 @@ public class MessageFormatter {
 	
 	public String format(List<Message> messages) {
 		StringBuilder builder = new StringBuilder();
-		for (Message message : messages) {
-			builder.append(format(message)).append('\n');
-		}
+		messages.stream().forEach((message) -> builder.append(format(message)));
 		return builder.toString();
 	}
-
+	
 	public String format(Message message) {
 		return message.text() + " (" + relativeTime(message.timestamp()) + ")";
 	}
-
+	
 	private String relativeTime(long timestamp) {
 		return prettyTime.format(new Date(timestamp));
 	}
