@@ -15,15 +15,16 @@ public class CommandFactory {
 		});
 		commands.put("follows", (callerName, input) -> new FollowUser(callerName, input.removeFirst()));
 		commands.put("wall", (callerName, input) -> new ReadWall(callerName, new MessageFormatter()));
+		commands.put("timeline", (callerName, input) -> new ReadTimeline(callerName, new MessageFormatter()));
 	}
 	
 	public static Command create(String rawInput) {
 		Deque<String> input = new ArrayDeque<>(Arrays.asList(rawInput.split(" ")));
 		String callerName = input.poll();
-		String command = "" + input.poll();
-		if (command.contains("->")) return commands.get(command).apply(callerName, input);
-		if (command.contains("follows")) return commands.get(command).apply(callerName, input);
-		if (command.contains("wall")) return commands.get(command).apply(callerName, input);
-		else return new ReadTimeline(callerName, null);
+		return commands.get(fixEmpty(input.poll())).apply(callerName, input);
+	}
+
+	private static String fixEmpty(String command) {
+		return command != null ? command : "timeline";
 	}
 }
