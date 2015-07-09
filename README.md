@@ -1,5 +1,5 @@
-## Exercise
-Implement a console-based social networking application (similar to [Twitter](www.twitter.com)) satisfying the scenarios below.
+## Objective
+To implement a console-based social networking application (similar to [Twitter](www.twitter.com)) satisfying the scenarios below.
 
 ### Features
 **Posting**: Alice can publish messages to a personal timeline.
@@ -45,3 +45,19 @@ Implement a console-based social networking application (similar to [Twitter](ww
 * Don’t bother making it work over a network or across processes. It can all be done in memory, assuming that users will all use the same terminal.
 
 * Non-existing users should be created as they post their first message. Application should not start with a pre-defined list of users.
+
+## Dependencies
+- Pretty time to show relative times:
+    
+    'org.ocpsoft.prettytime:prettytime:3.2.7.Final'
+
+## How to run this solution
+The dist directory contains the packaged classes and dependencies.
+
+    git clone https://github.com/itrion/SocialNetworkKata.git
+    java -jar dist/SocialNetwork-1.0.jar
+
+To run the tests:
+
+    gradle --daemon test
+    
